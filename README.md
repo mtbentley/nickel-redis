@@ -1,7 +1,10 @@
-nickel-postgres
+nickel-redis
 =======
 
-A postgres middleware for nickel.rs
+A redis middleware for nickel.rs
+
+Adapted almost 100% from nickel-org/nickel-postgres, using nvdelap/r2d2-redis 
+for pooled connections.
 
 ## Usage
 
@@ -15,8 +18,8 @@ accessing a connection pool in a handler attached before the middleware.
 
 ### `Cargo.toml`:
 
-    [dependencies.nickel_postgres]
-    git = "https://github.com/nickel-org/nickel-postgres.git"
+    [dependencies.nickel_redis]
+    git = "[TODO: github URL here]"
 
 ## Licence
 

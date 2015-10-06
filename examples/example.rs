@@ -1,26 +1,25 @@
 extern crate r2d2;
-extern crate postgres;
+extern crate redis;
 extern crate openssl;
 #[macro_use] extern crate nickel;
-extern crate nickel_postgres;
+extern crate nickel_redis;
 
 use std::env;
 use r2d2::NopErrorHandler;
-use postgres::SslMode;
 use nickel::{Nickel, HttpRouter};
-use nickel_postgres::{PostgresMiddleware, PostgresRequestExtensions};
+use nickel_redis::{RedisMiddleware, RedisRequestExtensions};
 
 fn main() {
     let mut app = Nickel::new();
 
-    let postgres_url = env::var("DATABASE_URL").unwrap();
-    let dbpool = PostgresMiddleware::new(&*postgres_url,
-                                         SslMode::None,
+    let redis_url = env::var("DATABASE_URL").unwrap();
+    let dbpool = RedisMiddleware::new(&*redis_url,
                                          5,
                                          Box::new(NopErrorHandler)).unwrap();
     app.utilize(dbpool);
     app.get("/my_counter", middleware! { |request|
-        let _connection = request.db_conn();
+        let _connection = request.redis_conn();
+        println!("{:?}", _connection);
 
         // use connection
     });

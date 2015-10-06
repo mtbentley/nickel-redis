@@ -1,15 +1,16 @@
 [package]
 
-name = "nickel_postgres"
+name = "nickel_redis"
 version = "0.0.0"
 authors = [
-    "bguiz"
+    "bguiz",
+    "Matthew Bentley <matthew@bentley.link>"
 ]
 
 [dependencies]
-postgres = "*"
+redis = "*"
 r2d2 = "*"
-r2d2_postgres = "*"
+r2d2_redis = "*"
 plugin = "*"
 typemap = "*"
 openssl = "*"
