@@ -19,7 +19,7 @@ accessing a connection pool in a handler attached before the middleware.
 ### `Cargo.toml`:
 
     [dependencies.nickel_redis]
-    git = "[TODO: github URL here]"
+    git = "https://github.com/matthewbentley/nickel-redis.git"
 
 ## Licence
 
