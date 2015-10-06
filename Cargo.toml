@@ -8,7 +8,6 @@ authors = [
 ]
 
 [dependencies]
-redis = "*"
 r2d2 = "*"
 plugin = "*"
 typemap = "*"
@@ -17,3 +16,6 @@ nickel = "*"
 
 [dependencies.r2d2_redis]
 git = "https://github.com/nevdelap/r2d2-redis.git"
+
+[dependencies.redis]
+git = "https://github.com/mitsuhiko/redis-rs.git"
