@@ -10,8 +10,10 @@ authors = [
 [dependencies]
 redis = "*"
 r2d2 = "*"
-r2d2_redis = "*"
 plugin = "*"
 typemap = "*"
 openssl = "*"
 nickel = "*"
+
+[dependencies.r2d2_redis]
+git = "https://github.com/nevdelap/r2d2-redis.git"
