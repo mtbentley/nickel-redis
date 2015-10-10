@@ -21,7 +21,7 @@ fn main() {
     app.utilize(dbpool);
     app.get("/my_counter", middleware! { |request|
         let pool_con = request.redis_conn();
-        let con = pool_con.deref();
+        let _con = pool_con.deref();
 
         // Use con as your connection
     });

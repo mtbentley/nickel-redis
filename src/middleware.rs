@@ -13,6 +13,28 @@ pub struct RedisMiddleware {
 }
 
 impl RedisMiddleware {
+    /// Creates a new connection to `connect_str` with `num_connections` in the
+    /// pool and using `error_handler` as the error handler.
+    ///
+    /// # Examples
+    /// ```
+    /// # extern crate r2d2;
+    /// # extern crate nickel;
+    /// # extern crate nickel_redis;
+    /// #
+    /// # use r2d2::NopErrorHandler;
+    /// # use nickel::Nickel;
+    /// # use nickel_redis::RedisMiddleware;
+    /// #
+    /// # fn main() {
+    /// let mut app = Nickel::new();
+    /// let server_url = "redis://127.0.0.1/".to_string();
+    /// let dbpool = RedisMiddleware::new(&*server_url,
+    ///                                   5,
+    ///                                   Box::new(NopErrorHandler)).unwrap();
+    /// app.utilize(dbpool);
+    /// # }
+    /// ```
     pub fn new(connect_str: &str,
                num_connections: u32,
                error_handler: Box<HandleError<::r2d2_redis::Error>>)
@@ -40,6 +62,12 @@ impl<D> Middleware<D> for RedisMiddleware {
 }
 
 pub trait RedisRequestExtensions {
+    /// Returns the pool for the Redis connection.
+    ///
+    /// Call `.deref()` on the result to get a connection.
+    ///
+    /// Requires `#![feature(core)]`, `extern crate core`, and `use core::ops::Deref` to use
+    /// `.deref()`.
     fn redis_conn(&self) -> PooledConnection<RedisConnectionManager>;
 }
 
