@@ -6,9 +6,7 @@ cache:
       - target
 
 rust:
-  - stable
   - nightly
-  - beta
 
 matrix:
   fast_finish: true
