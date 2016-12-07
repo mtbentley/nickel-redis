@@ -5,6 +5,6 @@ extern crate r2d2_redis;
 extern crate plugin;
 extern crate typemap;
 
-pub use middleware::{ RedisMiddleware, RedisRequestExtensions };
+pub use middleware::{RedisMiddleware, RedisRequestExtensions};
 
 mod middleware;

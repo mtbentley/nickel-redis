@@ -1,4 +1,3 @@
-#![feature(core)]
 extern crate r2d2;
 extern crate redis;
 #[macro_use] extern crate nickel;
